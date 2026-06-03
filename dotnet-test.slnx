@@ -3,4 +3,5 @@
   <Project Path="AppHost/AppHost.csproj" />
   <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
   <Project Path="backend/dotnet-test.csproj" />
+  <Project Path="backend/dotnet-test.Tests/dotnet-test.Tests.csproj" />
 </Solution>

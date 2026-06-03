@@ -1,4 +1,5 @@
 using dotnet_test.Data;
+using dotnet_test.Services.Recommendations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Controllers + Swagger
 builder.Services.AddControllers();
+builder.Services.AddScoped<IRecommendationEngine, RecommendationEngine>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
