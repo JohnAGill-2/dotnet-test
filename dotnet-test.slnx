@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Solution FileFormatVersion="12.00" MinimumVisualStudioVersion="17.0">
-    <Project Path="AppHost/AppHost.csproj" />
-    <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
-    <Project Path="backend/dotnet-test.csproj" />
-    <Project Path="backend/dotnet-test.Tests/dotnet-test.Tests.csproj" />
-</Solution>
