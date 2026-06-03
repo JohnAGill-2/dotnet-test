@@ -3,9 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Aspire service defaults (OpenTelemetry, health checks, service discovery)
-builder.AddServiceDefaults();
-
 // Database — connection string injected by Aspire, fallback for running directly
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
