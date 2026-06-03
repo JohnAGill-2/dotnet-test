@@ -12,11 +12,16 @@ public class RecommendationsController : ControllerBase
 {
     private readonly AppDbContext _db;
     private readonly IRecommendationEngine _engine;
+    private readonly IRecommendationContentGenerator _contentGenerator;
 
-    public RecommendationsController(AppDbContext db, IRecommendationEngine engine)
+    public RecommendationsController(
+        AppDbContext db,
+        IRecommendationEngine engine,
+        IRecommendationContentGenerator contentGenerator)
     {
         _db = db;
         _engine = engine;
+        _contentGenerator = contentGenerator;
     }
 
     [HttpPost]
@@ -29,6 +34,8 @@ public class RecommendationsController : ControllerBase
         if (player is null) return NotFound();
 
         var result = _engine.Evaluate(player, request?.MaxResults ?? 3);
+        result.Content = await _contentGenerator.GenerateAsync(player, result, cancellationToken);
+
         if (result.Blocked) return StatusCode(StatusCodes.Status403Forbidden, result);
 
         return Ok(result);

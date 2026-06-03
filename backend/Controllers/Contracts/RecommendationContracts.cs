@@ -22,11 +22,21 @@ public class RecommendationAuditItem
     public double WeightImpact { get; set; }
 }
 
+public class RecommendationContent
+{
+    public string Headline { get; set; } = string.Empty;
+    public string Message { get; set; } = string.Empty;
+    public string RecommendationType { get; set; } = string.Empty;
+    public string Reason { get; set; } = string.Empty;
+    public bool SafeToShow { get; set; }
+}
+
 public class RecommendationResponse
 {
     public string PlayerId { get; set; } = string.Empty;
     public bool Blocked { get; set; }
     public string? BlockReason { get; set; }
+    public RecommendationContent? Content { get; set; }
     public List<RecommendationOption> AllowedOptions { get; set; } = new();
     public List<RecommendationOption> BlockedOptions { get; set; } = new();
     public List<RecommendationAuditItem> Audit { get; set; } = new();

@@ -1,6 +1,8 @@
 using dotnet_test.Data;
+using dotnet_test.Services.Claude;
 using dotnet_test.Services.Recommendations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Controllers + Swagger
 builder.Services.AddControllers();
 builder.Services.AddScoped<IRecommendationEngine, RecommendationEngine>();
+builder.Services.AddScoped<IRecommendationContentGenerator, RecommendationContentGenerator>();
+builder.Services.Configure<ClaudeOptions>(builder.Configuration.GetSection(ClaudeOptions.SectionName));
+builder.Services.AddHttpClient<IClaudeClient, ClaudeClient>((serviceProvider, httpClient) =>
+{
+    var options = serviceProvider.GetRequiredService<IOptions<ClaudeOptions>>().Value;
+    httpClient.BaseAddress = new Uri(options.BaseUrl);
+    httpClient.Timeout = TimeSpan.FromSeconds(options.TimeoutSeconds);
+    httpClient.DefaultRequestHeaders.Add("anthropic-version", "2023-06-01");
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
