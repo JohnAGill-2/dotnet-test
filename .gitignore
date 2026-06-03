@@ -1,0 +1,108 @@
+# Build and Object files
+bin/
+obj/
+dist/
+.vs/
+**/*.dll
+**/*.pdb
+**/*.exe
+**/*.so
+**/*.dylib
+
+# User-specific files
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+**/*.VisualState.xml
+**/*.VisualStateManager.xml
+
+# Node.js / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnp
+.pnp.js
+**/dist/
+**/build/
+**/.next/
+**/coverage/
+
+# IDE and Editor
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.codeclimate.yml
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+appsettings.Development.json
+!appsettings.json
+.env.test
+.env.production.local
+
+# Logs
+logs/
+*.log
+*.logs
+
+# Runtime
+*.sqlite
+*.sqlite3
+*.db
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.#*
+
+# Cache and temp
+.cache/
+.grunt/
+.parcel-cache/
+.next/
+out/
+.nuxt/
+.cache/
+.vuepress/dist/
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port/
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Git
+.git/
+.gitattributes
